@@ -1,0 +1,29 @@
+
+// Shim process.env for browser environments immediately to prevent ReferenceErrors
+// @ts-ignore
+window.process = window.process || { env: { API_KEY: '' } };
+
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App.tsx';
+
+const rootElement = document.getElementById('root');
+if (!rootElement) {
+  throw new Error("Could not find root element to mount to");
+}
+
+try {
+  const root = ReactDOM.createRoot(rootElement);
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
+} catch (error) {
+  console.error("Failed to render the app:", error);
+  rootElement.innerHTML = `<div style="padding: 20px; color: red; font-family: sans-serif;">
+    <h1>Application Error</h1>
+    <p>The application failed to start. Please check the console for details.</p>
+    <pre>${error instanceof Error ? error.message : String(error)}</pre>
+  </div>`;
+}

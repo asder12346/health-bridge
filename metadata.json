@@ -1,0 +1,8 @@
+{
+  "name": "HealthBridge Telemedicine",
+  "description": "A comprehensive telemedicine platform featuring secure appointment scheduling, patient/doctor dashboards, and AI-powered medical summaries using Gemini.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
